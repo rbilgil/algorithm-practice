@@ -2,6 +2,8 @@
 # and more involved variations
 # found in https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
 
+require_relative 'time_taken'
+
 def sieve(num_primes)
 	nums_list = *(2..num_primes)
 	list_of_multiples = []
@@ -24,12 +26,7 @@ def trial_division(num_primes)
 end
 
 def get_primes(num_primes, method)
-	start = Time.now
-		primes = self.send(method, num_primes)
-	stop = Time.now
-
-	p "Time taken: #{stop - start}"
-	primes
+	time_taken(method, num_primes)
 end
 
 sieve_primes = get_primes 5000, :sieve
